@@ -50,21 +50,28 @@ public class Game implements CheckingNumber {
     public String checkInt(List<String> strings) {
         Pattern pattern;
         pattern = Pattern.compile("[1-9][0-9]*");
-        String line;
+        String line = "";
         Matcher matcher;
         boolean flag = false,
                 condition = false;
         do {
             if (flag) printMenu(strings);
             line = in.nextLine();
-            matcher = pattern.matcher(line);
-            if (matcher.matches()){
-                if (Integer.parseInt(line) > strings.size())
-                    condition = false;
-                else condition = true;
+            if (line.equals("0")) {
+                System. exit(0);
+            } else if (line.equals("?")) {
+
+            } else {
+                matcher = pattern.matcher(line);
+                if (matcher.matches()) {
+                    if (Integer.parseInt(line) > strings.size())
+                        condition = false;
+                    else condition = true;
+                }
+                flag = true;
             }
-            flag = true;
-        } while (!condition);
+        }
+            while (!condition) ;
 
         return line;
     }

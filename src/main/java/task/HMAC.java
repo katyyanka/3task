@@ -34,10 +34,9 @@ public class HMAC {
         //new String(Hex.encodeHex("..."));
         StringBuilder formatted = new StringBuilder();
         byte[] bytes = sha256_HMAC.doFinal(data.getBytes("UTF-8"));
-        for(byte b: bytes) {
+        for (byte b : bytes) {
             formatted.append(String.format("%x", b));
         }
-        System.out.println(formatted);
         return formatted.toString();
     }
 
@@ -53,19 +52,19 @@ public class HMAC {
         return HMAC;
     }
 
-    private String generateHMACKey(){
+    private String generateHMACKey() {
         SecureRandom random = new SecureRandom();
         byte[] num = new byte[16];
         random.nextBytes(num);
         StringBuilder formatted = new StringBuilder();
-        for(byte b: num) {
+        for (byte b : num) {
             formatted.append(String.format("%x", b));
         }
         formatted = new StringBuilder(formatted.toString().toUpperCase());
         return formatted.toString();
     }
 
-    private int generateMove(List<String> moves){
+    private int generateMove(List<String> moves) {
         SecureRandom random = new SecureRandom();
         return random.nextInt(moves.size());
     }
